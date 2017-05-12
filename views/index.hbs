@@ -1,2 +1,51 @@
-<h1>Test {{title}}</h1>
-<p>Welcome to {{title}}</p>
+<script>
+    angular.module('foo', []).factory('sse', function($rootScope) {
+        var sse = new EventSource('/stream');
+        return {
+            addEventListener: function(eventName, callback) {
+                sse.addEventListener(eventName, function() {
+                    var args = arguments;
+                    $rootScope.$apply(function () {
+                        callback.apply(sse, args);
+                    });
+                });
+            }
+        };
+    });
+    function FooCtrl($scope, sse) {
+        $scope.foos = [];
+        sse.addEventListener('message', function (e) {
+            $scope.foos.push({value: e.data});
+        });
+    }
+</script>
+
+<!-- Header -->
+<header id="top" class="header text-primary">
+    <div class="text-vertical-center">
+        <h1>Test {{{title}}}<span class="circle-tm">&#8482;</span></h1>
+        <h3>A Simple Express Interface</h3>
+        <ul id="messages"></ul>
+        <br>
+        <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+    </div>
+</header>
+
+<!-- About -->
+<section id="about" class="about" ng-controller="FooCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Data logs!</h2>
+                <ul><li>sjjssdjd</li></ul>
+                <ul class="lead text-primary" id="messages">
+                    <li ng-repeat="batch in values" style="color: black" ng-bind="batch.value"></li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+
