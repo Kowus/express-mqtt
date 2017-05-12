@@ -1,6 +1,3 @@
-window.onload = function () {
-	document.getElementById('loading-mask').style.display = 'none';
-};
 // Closes the sidebar menu
 $("#menu-close").click(function (e) {
 	e.preventDefault();
@@ -15,6 +12,12 @@ $("#menu-toggle").click(function (e) {
 	e.preventDefault();
 	$("#sidebar-wrapper").toggleClass("active");
 });
+
+var es = new EventSource('/stream');
+es.onmessage = function (e) {
+	$('#messages').append("<li>" + e.data + "</li>")
+}
+
 // Scrolls to the selected menu item on the page
 $(function () {
 	$('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function () {
@@ -55,7 +58,3 @@ $(document).scroll(function () {
 		}
 	}
 });
-var es = new EventSource('/stream');
-es.onmessage = function (e) {
-	$('#messages').append("<li>" + e.data + "</li>")
-}

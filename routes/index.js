@@ -71,7 +71,7 @@ router.get('/stream', function (req, res, next) {
 	client.on('connect', function () {
 		client.subscribe(mychannel, function () {
 			client.on('message', function (topic, msg, pkt) {
-				res.write('data:' + options + '\n\n')
+				res.write('data:' + msg + '\n\n')
 			});
 		});
 	});
@@ -87,3 +87,4 @@ router.get('/stream', function (req, res, next) {
 
 
 module.exports = router;
+//    "mqtt": "0.2.7",
