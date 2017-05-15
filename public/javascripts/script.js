@@ -13,10 +13,10 @@ $("#menu-toggle").click(function (e) {
 	$("#sidebar-wrapper").toggleClass("active");
 });
 
-var es = new EventSource('/stream');
+/*var es = new EventSource('/stream');
 es.onmessage = function (e) {
 	$('#messages').append("<li>" + e.data + "</li>")
-}
+}*/
 
 // Scrolls to the selected menu item on the page
 $(function () {

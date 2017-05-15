@@ -36,36 +36,41 @@
 
 <body>
 
-    <!-- Navigation -->
-    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
-    <nav id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-            <li class="sidebar-brand">
-                <a href="#top" onclick=$("#menu-close").click();>{{{title}}}</a>
-            </li>
-            <li>
-                <a href="#top" onclick=$("#menu-close").click();>Home</a>
-            </li>
-            <li>
-                <a href="#about" onclick=$("#menu-close").click();>About</a>
-            </li>
-            <li>
-                <a href="#services" onclick=$("#menu-close").click();>Services</a>
-            </li>
-            <li>
-                <a href="#portfolio" onclick=$("#menu-close").click();>Insights</a>
-            </li>
-            <li>
-                <a href="#testimonials" onclick=$("#menu-close").click();>Testimonials</a>
-            </li>
-            <li>
-                <a href="#contact" onclick=$("#menu-close").click();>Contact</a>
-            </li>
-        </ul>
-    </nav>
+<!-- Navigation -->
+<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+<nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+        <li class="sidebar-brand">
+            <a href="#top" onclick=$("#menu-close").click();>{{{title}}}</a>
+        </li>
+        <li>
+            <a href="#top" onclick=$("#menu-close").click();>Home</a>
+        </li>
+        <li>
+            <a href="#about" onclick=$("#menu-close").click();>About</a>
+        </li>
+        <li>
+            <a href="#services" onclick=$("#menu-close").click();>Services</a>
+        </li>
+        <li>
+            <a href="#portfolio" onclick=$("#menu-close").click();>Insights</a>
+        </li>
+        <li>
+            <a href="#testimonials" onclick=$("#menu-close").click();>Testimonials</a>
+        </li>
+        <li>
+            <a href="#contact" onclick=$("#menu-close").click();>Contact</a>
+        </li>
+    </ul>
+</nav>
+
+
 {{{body}}}
-<div id="tweet"><a href="https://twitter.com/barnabasnomo" class="twitter-follow-button" data-show-count="true">Follow @barnabasnomo</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<div id="tweet"><a href="https://twitter.com/barnabasnomo" class="twitter-follow-button" data-show-count="true">Follow @barnabasnomo</a>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 <!-- Footer -->
 <footer>
@@ -77,21 +82,21 @@
                 <p> Kakramadu Road
                     <br>Cantonments, Accra GH 00233</p>
                 <ul class="list-unstyled">
-                    <li><i class="fa fa-phone fa-fw"></i><a href="tel:{{{pageResource.phone}}}">{{{pageResource.phone}}}</a></li>
+                    <li><i class="fa fa-phone fa-fw"></i><a href="tel:{{{pageResource.phone}}}" style="color: #f0d70b">{{{pageResource.phone}}}</a></li>
                     <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:{{{pageResource.email}}}">{{{pageResource.email}}}</a>
                     </li>
                 </ul>
                 <br>
                 <ul class="list-inline">
                     <li>
-                        <a href="https://www.facebook.com/nomobarnabas" target="_blank"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                        <a href="https://www.facebook.com/nomobarnabas" target="_blank"><i class="fa fa-facebook fa-fw fa-3x" style="color: #190099"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/tea_drama/" target="_blank"><i class="text-primary fa fa-instagram fa-fw
+								fa-3x"></i></a>
                     </li>
                     <li>
                         <a href="https://twitter.com/barnabasnomo" target="_blank"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/teadrama/" target="_blank"><i class="fa fa-instagram fa-fw
-								fa-3x"></i></a>
                     </li>
                 </ul>
                 <hr class="small">
@@ -103,13 +108,12 @@
 </footer>
 
 
-
 <!-- jQuery -->
 <script src="/javascripts/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="/javascripts/bootstrap.min.js"></script>
-    <!-- Custom Javascript Scripts -->
+<!-- Custom Javascript Scripts -->
 <script src="/javascripts/script.js"></script>
 
 </body>

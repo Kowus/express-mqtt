@@ -1,28 +1,49 @@
 <!-- Header -->
 <header id="top" class="header text-primary">
     <div class="text-vertical-center">
-        <h1>Test {{{title}}}<span class="circle-tm">&#8482;</span></h1>
-        <h3>A Simple Express Interface</h3>
-        <ul id="messages"></ul>
+        <h1 style="color: black">Test {{{title}}}<span class="circle-tm">&#8482;</span></h1>
+        <h3 style="color:black;">A Simple Express Interface</h3>
         <br>
-        <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
     </div>
 </header>
 
-<!-- About -->
-<section id="about" class="about" ng-controller="StreamController">
+
+<section id="portfolio" class="portfolio" ng-controller="StreamController">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2>Data logs!</h2>
-                <ul >
-                    <li ng-repeat="batch in msg" class="text-primary">{[{batch}]}</li>
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <h2>Data Logs</h2>
+                <hr class="small">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <div class="portfolio-figure text-nowrap" style="margin-bottom: 0;overflow-x: scroll;">
+                                <div class="text-left text-primary">
+                                    <ul class="list-group list-inline list-unstyled" style="margin-left: 5px;">
+                                        <li class="list-inline" ng-repeat="item in msg | orderBy:'-date'">{[{item.rain}]}</li>
+                                    </ul>
 
-                </ul>
+                                    <!--{[{msg}]}-->
+                                </div>
+                            </div>
+                            <h3 class="portfolio-caption text-left" style="margin-top: 20px;"><span style="margin-left: 10px;">Rainfall</span></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <div class="portfolio-figure" style="margin-bottom: 0;">
+
+                            </div>
+                            <h3 class="portfolio-caption text-left" style="margin-top: 20px;"><span style="margin-left: 10px;">Field Name</span></h3>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+            <!-- /.col-lg-10 -->
+
         </div>
         <!-- /.row -->
     </div>
     <!-- /.container -->
 </section>
-
