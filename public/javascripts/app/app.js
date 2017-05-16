@@ -11,6 +11,8 @@
 				"theme": "ocean",
 				"xaxisname": "Date/Time",
 				"yaxisname": "Amount in millimeters",
+				"numdisplaysets": "10",
+				"labeldisplay": "rotate",
 			},
 			"data":[]
 		};
