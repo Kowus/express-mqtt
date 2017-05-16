@@ -43,7 +43,8 @@
 			"theme": "fint",
 			"labeldisplay": "rotate",
 			"divlinecolor":"#cccccc",
-			"linecolor":"#7c0300"
+			"linecolor":"#7c0300",
+			"labelcolor":"blue"
 		},
 		"data":[]
 	}

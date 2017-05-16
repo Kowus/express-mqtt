@@ -30,7 +30,7 @@ redis_cli.on('error', function (err) {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-	res.render('index', {title: 'MQTT'});
+	res.render('index', {title: 'Weather Station'});
 });
 
 // publishing

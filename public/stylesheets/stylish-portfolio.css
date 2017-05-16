@@ -154,9 +154,7 @@ hr.small {
     position: relative;
     width: 100%;
     height: 50%;
-    /*background-color: ;*/
-    /*background: url(../images/insights.JPG) no-repeat center center scroll;*/
-    background: #edf2a6 no-repeat center center scroll;
+    background: #f0d70b no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;

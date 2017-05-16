@@ -16,8 +16,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 app.locals.pageResource = {
-	email: 'barnabas@elite-education.org',
-	phone: '+233503292623'
+	email: 'kumasi@hive.emailaddressgoeshere',
+	phone: '+233233233233'
 }
 
 // uncomment after placing your favicon in /public
