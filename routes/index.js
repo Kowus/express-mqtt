@@ -22,7 +22,7 @@ var express = require('express'),
 	};
 
 // create a new redis client and connect to our local redis instance
-var redis_cli = redis.createClient();
+var redis_cli = redis.createClient(process.env.REDISCLOUD_URL,{no_ready_check:true});
 // Handle errors by printing to console
 redis_cli.on('error', function (err) {
 	console.log("Error " + err);
@@ -42,7 +42,7 @@ router.post('/publish', function (req, res, next) {
 	client.on('connect', function () {
 		client.publish(mychannel, JSON.stringify(insertedData), function () {
 			client.end();
-			res.writeHead(204, {'Connection': 'keep-alive'})
+			res.writeHead(204, {'Connection': 'keep-alive'});
 			res.end();
 		});
 	});
@@ -61,7 +61,7 @@ router.get('/stream', function (req, res, next) {
 		'Cache-Control': 'no-cache',
 		'Connection': 'keep-alive'
 	});
-	res.write('\n')
+	res.write('\n');
 
 	/**
 	 * Timeout timer, send a comment line every 20 seconds
