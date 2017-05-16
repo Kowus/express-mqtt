@@ -42,9 +42,9 @@
 			"numberSuffix": "°C",
 			"theme": "fint",
 			"labeldisplay": "rotate",
-			"divlinecolor":"#cccccc"
+			"divlinecolor":"#cccccc",
+			"linecolor":"#7c0300"
 		},
 		"data":[]
 	}
-
 })();
