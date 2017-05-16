@@ -1,26 +1,26 @@
 var express = require('express'),
 	router = express.Router(),
-	os = require('os'),
-	url = require('url'),
 	mqtt = require('mqtt'),
+	url = require('url'),
 	redis = require('redis'),
-	mqtt_url = url.parse(process.env.CLOUDMQTT_URL || 'mqtt://localhost:1883'),
+	mqtt_url = url.parse(process.env.CLOUDMQTT_URL),
 	auth = (mqtt_url.auth || ':').split(':'),
 	mychannel = 'weather',
+	hosturl = "mqtt://" + mqtt_url.host,
 	i = 2000000,
 	options = {
 		port: mqtt_url.port,
-		host: mqtt_url.hostname,
 		username: auth[0],
 		password: auth[1],
 		keepalive: 60,
+		clientId: 'mqttjs_' + Math.random().toString(16).substr(2, 8),
 		reconnectPeriod: 1000,
 		protocolId: 'MQIsdp',
 		protocolVersion: 3,
 		clean: true,
 		encoding: 'utf8'
 	};
-new Date().to
+
 // create a new redis client and connect to our local redis instance
 var redis_cli = redis.createClient();
 // Handle errors by printing to console
@@ -36,10 +36,9 @@ router.get('/', function (req, res, next) {
 // publishing
 router.post('/publish', function (req, res, next) {
 	var insertedData = req.body;
-	var curD = new Date().toString();
-	console.log(curD)
+
 	redis_cli.setex(insertedData.date, 3600 * 48, JSON.stringify(insertedData));
-	var client = mqtt.connect('mqtt://localhost:1883', options);
+	var client = mqtt.connect(hosturl, options);
 	client.on('connect', function () {
 		client.publish(mychannel, JSON.stringify(insertedData), function () {
 			client.end();
@@ -71,17 +70,17 @@ router.get('/stream', function (req, res, next) {
 		res.write(':' + '\n');
 	}, 20000);
 
-	var client = mqtt.connect('mqtt://localhost:1883', options);
+	var client = mqtt.connect(hosturl, options);
 	client.on('connect', function () {
 		client.subscribe(mychannel, function () {
 			redis_cli.keys("*", function (error, result) {
-				if(result) {
+				if (result) {
 					console.log("Records found: " + result.length);
 					result.forEach(function (item) {
 						redis_cli.get(item, function (err, cursor) {
 							if (cursor) {
 								res.write('data:' + cursor + '\n\n');
-							}else {
+							} else {
 								console.log("no cache found: " + error);
 							}
 						})
@@ -89,12 +88,6 @@ router.get('/stream', function (req, res, next) {
 				} else {
 					console.log("no cache found: " + error);
 				}
-				/*if (result) {
-					console.log("Records found: " + Array(JSON.parse(result)).length);
-					res.write('data:' + result + '\n\n');
-				} else {
-					console.log("no cache found: " + error);
-				}*/
 			});
 			client.on('message', function (topic, msg, pkt) {
 				res.write('data:' + msg + '\n\n')
