@@ -12,26 +12,38 @@
 				"xaxisname": "Date/Time",
 				"yaxisname": "Amount in inches",
 				"numdisplaysets": "10",
+			"refreshinterval":"5",
 				"labeldisplay": "rotate",
-				"refreshinterval": "3",
 				"numberSuffix":"in"
 			},
+			"categories": [
+				{
+					"category": [
+						{
+							"label": "Day Start"
+						}
+					]
+				}
+			],
 			"data": []
 		};
 		$scope.heat = temperature;
 		$scope.pressure = pressure;
 		$scope.light = light;
 		$scope.humidity = humidity;
+		$scope.wind_dir = wind_dir;
+		$scope.wind_spd = wind_spd;
 		var handleCallback = function (msg) {
 			$scope.$apply(function () {
 				var tempJS = JSON.parse(msg.data);
 				var dt = new Date(tempJS.date);
 				var date_time = dt.getUTCDate() + '-' + (dt.getUTCMonth() + 1).toString() + '-' + dt.getUTCFullYear() + '@' + dt.getUTCHours() + ':' + dt.getUTCMinutes() + ':' + dt.getSeconds()
-				$scope.rain.data.push({value: tempJS.rain, label: date_time});
-				$scope.heat.data.push({value: tempJS.temperature, label: date_time});
-				$scope.pressure.data.push({value: tempJS.pressure, label: date_time});
-				$scope.light.data.push({value: tempJS.light, label: date_time});
-				$scope.humidity.data.push({value: tempJS.humidity, label: date_time});
+				$scope.rain.data.unshift({value: tempJS.rain, label: date_time});
+				console.log($scope.rain);
+				/*$scope.heat.data.unshift({value: tempJS.temperature, label: date_time});
+				$scope.pressure.data.unshift({value: tempJS.pressure, label: date_time});
+				$scope.light.data.unshift({value: tempJS.light, label: date_time});
+				$scope.humidity.data.unshift({value: tempJS.humidity, label: date_time});*/
 			});
 		};
 
@@ -39,6 +51,36 @@
 		source.addEventListener('message', handleCallback, false)
 	}]);
 
+	var wind_dir = {
+		"chart": {
+			"caption": "Wind Direction",
+			"subcaption": "Bearings",
+			"xaxisname": "Date/Time",
+			"yaxisname": "Bearing in Degrees",
+			"subcaptionFontBold": "0",
+			"numberSuffix": "°",
+			"theme": "fint",
+			"labeldisplay": "rotate",
+			"divlinecolor": "#cccccc",
+			"linecolor": "#7c0300"
+		},
+		"data": []
+	};
+	var wind_spd = {
+		"chart": {
+			"caption": "Wind Speed",
+			"subcaption": "Gust",
+			"xaxisname": "Date/Time",
+			"yaxisname": "Windspeed",
+			"subcaptionFontBold": "0",
+			"numberSuffix": "mph",
+			"theme": "fint",
+			"labeldisplay": "rotate",
+			"divlinecolor": "#cccccc",
+			"linecolor": "#7c0300"
+		},
+		"data": []
+	};
 	var temperature = {
 		"chart": {
 			"caption": "Temperature",
@@ -50,8 +92,7 @@
 			"theme": "fint",
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
-			"linecolor": "#7c0300",
-			"refreshinterval": "3"
+			"linecolor": "#7c0300"
 		},
 		"data": []
 	};
@@ -66,8 +107,7 @@
 			"theme": "fint",
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
-			"linecolor": "#f0d70b",
-			"refreshinterval": "3"
+			"linecolor": "#f0d70b"
 		},
 		"data": []
 	};
@@ -82,8 +122,7 @@
 			"theme": "zune",
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
-			"linecolor": "#ffb011",
-			"refreshinterval": "3"
+			"linecolor": "#ffb011"
 		},
 		"data": []
 	};
@@ -98,8 +137,7 @@
 			"theme": "ocean",
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
-			"linecolor": "#7fa2ff",
-			"refreshinterval": "3"
+			"linecolor": "#7fa2ff"
 		},
 		"data": []
 	};

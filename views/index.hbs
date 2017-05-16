@@ -15,10 +15,10 @@
                 <h2>Data Logs</h2>
                 <hr class="small">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="portfolio-item">
                             <div class="portfolio-figure" style="margin-bottom: 0;">
-                                <fusioncharts type="line" width="100%" dataSource="{[{rain}]}"></fusioncharts>
+                                <fusioncharts type="realtimeline" width="100%" dataSource="{[{rain}]}"></fusioncharts>
                             </div>
                             <h3 class="portfolio-caption text-left" style="margin-top: 20px;"><span style="margin-left: 10px;">Rainfall</span></h3>
                         </div>
@@ -39,7 +39,7 @@
                             <h3 class="portfolio-caption text-left" style="margin-top: 20px;"><span style="margin-left: 10px;">Pressure</span></h3>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="portfolio-item">
                             <div class="portfolio-figure" style="margin-bottom: 0;">
                                 <fusioncharts width="100%" type="line" dataSource="{[{light}]}"></fusioncharts>
@@ -55,7 +55,22 @@
                             <h3 class="portfolio-caption text-left" style="margin-top: 20px;"><span style="margin-left: 10px;">Humidity</span></h3>
                         </div>
                     </div>
-
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <div class="portfolio-figure" style="margin-bottom: 0;">
+                                <fusioncharts type="realtimeline" width="100%" dataSource="{[{wind_dir}]}"></fusioncharts>
+                            </div>
+                            <h3 class="portfolio-caption text-left" style="margin-top: 20px;"><span style="margin-left: 10px;">Wind Direction</span></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="portfolio-item">
+                            <div class="portfolio-figure" style="margin-bottom: 0;">
+                                <fusioncharts type="realtimeline" width="100%" dataSource="{[{wind_spd}]}"></fusioncharts>
+                            </div>
+                            <h3 class="portfolio-caption text-left" style="margin-top: 20px;"><span style="margin-left: 10px;">Wind Speed</span></h3>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /.col-lg-10 -->
