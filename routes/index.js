@@ -20,7 +20,7 @@ var express = require('express'),
 		clean: true,
 		encoding: 'utf8'
 	};
-
+new Date().to
 // create a new redis client and connect to our local redis instance
 var redis_cli = redis.createClient();
 // Handle errors by printing to console

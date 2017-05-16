@@ -8,16 +8,19 @@
 			"chart":{
 				"caption": "Rainfall",
 				"subCaption": "Live Stream Data: Last 48 Hours",
-				"theme":"zune"
+				"theme": "ocean",
+				"xaxisname": "Date/Time",
+				"yaxisname": "Amount in millimeters",
 			},
 			"data":[]
 		};
-
 		var handleCallback = function (msg) {
 			$scope.$apply(function () {
-				// $scope.msg.push(JSON.parse(msg.data));
 				var tempJS=JSON.parse(msg.data);
-				$scope.rain.data.push({value:tempJS.rain,label:tempJS.date})
+				var dt = new Date(tempJS.date);
+				var date_time= dt.getUTCDate() + '-'+(dt.getUTCMonth()+1).toString()+'-'+dt.getUTCFullYear()+'@'+dt.getUTCHours()+':'+dt.getUTCMinutes()+':'+dt.getSeconds()
+				$scope.rain.data.push({value:tempJS.rain,label:date_time});
+				console.log($scope.rain);
 			});
 		};
 
