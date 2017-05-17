@@ -55,11 +55,12 @@
 			"xaxisname": "Date/Time",
 			"yaxisname": "Amount in inches",
 			"subcaptionFontBold": "0",
-			"numberSuffix":"in",
+			"numberSuffix": "in",
 			"theme": "ocean",
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
-			"linecolor": "#f94700"
+			"linecolor": "#f94700",
+			"showrealtimevalue": "0"
 		},
 		"categories": [
 			{
@@ -68,7 +69,7 @@
 		],
 		"dataset": [
 			{
-				"data":[]
+				"data": []
 			}
 		]
 	};
@@ -83,15 +84,16 @@
 			"theme": "fint",
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
-			"linecolor": "#7c0300"
-		},"categories": [
+			"linecolor": "#7c0300",
+			"showrealtimevalue": "0"
+		}, "categories": [
 			{
 				"category": []
 			}
 		],
 		"dataset": [
 			{
-				"data":[]
+				"data": []
 			}
 		]
 	};
@@ -106,15 +108,16 @@
 			"theme": "fint",
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
-			"linecolor": "#7c0300"
-		},"categories": [
+			"linecolor": "#7c0300",
+			"showrealtimevalue": "0"
+		}, "categories": [
 			{
 				"category": []
 			}
 		],
 		"dataset": [
 			{
-				"data":[]
+				"data": []
 			}
 		]
 	};
@@ -129,15 +132,16 @@
 			"theme": "fint",
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
-			"linecolor": "#7c0300"
-		},"categories": [
+			"linecolor": "#7c0300",
+			"showrealtimevalue": "0"
+		}, "categories": [
 			{
 				"category": []
 			}
 		],
 		"dataset": [
 			{
-				"data":[]
+				"data": []
 			}
 		]
 	};
@@ -152,15 +156,16 @@
 			"theme": "fint",
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
-			"linecolor": "#f0d70b"
-		},"categories": [
+			"linecolor": "#f0d70b",
+			"showrealtimevalue": "0"
+		}, "categories": [
 			{
 				"category": []
 			}
 		],
 		"dataset": [
 			{
-				"data":[]
+				"data": []
 			}
 		]
 	};
@@ -175,15 +180,16 @@
 			"theme": "zune",
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
-			"linecolor": "#ffb011"
-		},"categories": [
+			"linecolor": "#ffb011",
+			"showrealtimevalue": "0"
+		}, "categories": [
 			{
 				"category": []
 			}
 		],
 		"dataset": [
 			{
-				"data":[]
+				"data": []
 			}
 		]
 	};
@@ -198,15 +204,16 @@
 			"theme": "ocean",
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
-			"linecolor": "#7fa2ff"
-		},"categories": [
+			"linecolor": "#7fa2ff",
+			"showrealtimevalue": "0"
+		}, "categories": [
 			{
 				"category": []
 			}
 		],
 		"dataset": [
 			{
-				"data":[]
+				"data": []
 			}
 		]
 	};
