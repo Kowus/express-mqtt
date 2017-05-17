@@ -263,6 +263,7 @@ hr.small {
 .btn-primary{background-color: #7c0300}
 .text-primary{color:#7c0300}
 a.text-primary:focus,a.text-primary:hover{color:rgba(201,4,0,0.95)}
+.btn-primary:focus,.btn-primary:hover{color:rgba(201,4,0,0.95)}
 blockquote.the-zen{
 	height:55vh;
 	font-size:1em;
