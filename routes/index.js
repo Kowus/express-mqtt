@@ -3,17 +3,17 @@ var express = require('express'),
 	mqtt = require('mqtt'),
 	url = require('url'),
 	redis = require('redis'),
-	mqtt_url = url.parse(process.env.CLOUDMQTT_URL),
+	mqtt_url = url.parse(process.env.CLOUDMQTT_URL || 'mqtt://localhost:1883'),
 	auth = (mqtt_url.auth || ':').split(':'),
 	mychannel = 'weather',
 	hosturl = "mqtt://" + mqtt_url.host,
 	i = 2000000,
 	options = {
 		port: mqtt_url.port,
+		host:mqtt_url.host,
 		username: auth[0],
 		password: auth[1],
 		keepalive: 60,
-		clientId: 'mqttjs_' + Math.random().toString(16).substr(2, 8),
 		reconnectPeriod: 1000,
 		protocolId: 'MQIsdp',
 		protocolVersion: 3,
@@ -37,7 +37,7 @@ router.get('/', function (req, res, next) {
 router.post('/publish', function (req, res, next) {
 	var insertedData = req.body;
 
-	redis_cli.setex(/*insertedData.date*/new Date().toISOString(), 3600 * 48, JSON.stringify(insertedData));
+	// redis_cli.setex(/*insertedData.date*/new Date().toISOString(), 3600 * 48, JSON.stringify(insertedData));
 	var client = mqtt.connect(hosturl, options);
 	client.on('connect', function () {
 		client.publish(mychannel, JSON.stringify(insertedData), function () {
@@ -51,7 +51,6 @@ router.post('/publish', function (req, res, next) {
 router.get('/stream', function (req, res, next) {
 //	set timeout as high as possible
 	req.socket.setTimeout(i *= 6);
-
 	/**
 	 * send headers for event-stream connection
 	 * see spec for more information

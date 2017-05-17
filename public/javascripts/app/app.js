@@ -11,21 +11,20 @@
 				"theme": "ocean",
 				"xaxisname": "Date/Time",
 				"yaxisname": "Amount in inches",
-				"numdisplaysets": "10",
-			"refreshinterval":"5",
+				"refreshinterval":"5",
 				"labeldisplay": "rotate",
 				"numberSuffix":"in"
 			},
 			"categories": [
 				{
-					"category": [
-						{
-							"label": "Day Start"
-						}
-					]
+					"category": []
 				}
 			],
-			"data": []
+			"dataset": [
+				{
+					"data":[]
+				}
+			]
 		};
 		$scope.heat = temperature;
 		$scope.pressure = pressure;
@@ -38,8 +37,9 @@
 				var tempJS = JSON.parse(msg.data);
 				var dt = new Date(tempJS.date);
 				var date_time = dt.getUTCDate() + '-' + (dt.getUTCMonth() + 1).toString() + '-' + dt.getUTCFullYear() + '@' + dt.getUTCHours() + ':' + dt.getUTCMinutes() + ':' + dt.getSeconds()
-				$scope.rain.data.unshift({value: tempJS.rain, label: date_time});
-				console.log($scope.rain);
+				$scope.rain.dataset[0].data.unshift({value: tempJS.rain});
+				$scope.rain.categories[0].category.unshift({label: date_time});
+				console.log(msg.data);
 				/*$scope.heat.data.unshift({value: tempJS.temperature, label: date_time});
 				$scope.pressure.data.unshift({value: tempJS.pressure, label: date_time});
 				$scope.light.data.unshift({value: tempJS.light, label: date_time});
