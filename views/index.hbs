@@ -1,18 +1,9 @@
-<!-- Header -->
-<header id="top" class="header text-primary">
-    <div class="text-vertical-center">
-        <h1 style="color: #768">Ghanalog 01 <span class="circle-tm" style="color: white">&#8482;</span></h1>
-        <h3 style="color:black;">A {{{title}}} Interface <br><small>by</small><br>Kumasi Hive Farmer Line</h3>
-        <br>
-    </div>
-</header>
-
 
 <section id="portfolio" class="portfolio" ng-controller="StreamController">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 text-center">
-                <h2>Data Logs</h2>
+                <h2>Data Logs<br><small>lon:{[{longitude}]}, lat: {[{latitude}]}, alt: {[{altitude}]}<span class="pull-right btn btn-primary">Battery Level: {[{battery}]}%</span></small></h2>
                 <hr class="small">
                 <div class="row">
                     <div class="col-md-12">
@@ -26,7 +17,7 @@
                     <div class="col-md-6">
                         <div class="portfolio-item">
                             <div class="portfolio-figure" style="margin-bottom: 0;">
-                                <fusioncharts type="line" width="100%" dataSource="{[{heat}]}"></fusioncharts>
+                                <fusioncharts type="realtimeline" width="100%" dataSource="{[{heat}]}"></fusioncharts>
                             </div>
                             <h3 class="portfolio-caption text-left" style="margin-top: 20px;"><span style="margin-left: 10px;">Temperature</span></h3>
                         </div>
@@ -34,7 +25,7 @@
                     <div class="col-md-6">
                         <div class="portfolio-item">
                             <div class="portfolio-figure" style="margin-bottom: 0;">
-                                <fusioncharts width="100%" type="line" dataSource="{[{pressure}]}"></fusioncharts>
+                                <fusioncharts width="100%" type="realtimeline" dataSource="{[{pressure}]}"></fusioncharts>
                             </div>
                             <h3 class="portfolio-caption text-left" style="margin-top: 20px;"><span style="margin-left: 10px;">Pressure</span></h3>
                         </div>
@@ -42,7 +33,7 @@
                     <div class="col-md-12">
                         <div class="portfolio-item">
                             <div class="portfolio-figure" style="margin-bottom: 0;">
-                                <fusioncharts width="100%" type="line" dataSource="{[{light}]}"></fusioncharts>
+                                <fusioncharts width="100%" type="realtimeline" dataSource="{[{light}]}"></fusioncharts>
                             </div>
                             <h3 class="portfolio-caption text-left" style="margin-top: 20px;"><span style="margin-left: 10px;">Light</span></h3>
                         </div>
@@ -50,7 +41,7 @@
                     <div class="col-md-6">
                         <div class="portfolio-item">
                             <div class="portfolio-figure" style="margin-bottom: 0;">
-                                <fusioncharts width="100%" type="line" dataSource="{[{humidity}]}"></fusioncharts>
+                                <fusioncharts width="100%" type="realtimeline" dataSource="{[{humidity}]}"></fusioncharts>
                             </div>
                             <h3 class="portfolio-caption text-left" style="margin-top: 20px;"><span style="margin-left: 10px;">Humidity</span></h3>
                         </div>

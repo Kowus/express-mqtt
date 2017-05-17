@@ -3,29 +3,13 @@
 		$interpolateProvider.startSymbol('{[{').endSymbol('}]}');
 	});
 	app.controller('StreamController', ['$scope', function ($scope) {
+
+		$scope.longitude = 0;
+		$scope.latitude = 0;
+		$scope.altitude = 0;
+		$scope.battery = 0;
 		// $scope.msg=[];
-		$scope.rain = {
-			"chart": {
-				"caption": "Rainfall",
-				"subCaption": "Amount of Rainfall, measured in inches",
-				"theme": "ocean",
-				"xaxisname": "Date/Time",
-				"yaxisname": "Amount in inches",
-				"refreshinterval":"5",
-				"labeldisplay": "rotate",
-				"numberSuffix":"in"
-			},
-			"categories": [
-				{
-					"category": []
-				}
-			],
-			"dataset": [
-				{
-					"data":[]
-				}
-			]
-		};
+		$scope.rain = rain;
 		$scope.heat = temperature;
 		$scope.pressure = pressure;
 		$scope.light = light;
@@ -37,20 +21,57 @@
 				var tempJS = JSON.parse(msg.data);
 				var dt = new Date(tempJS.date);
 				var date_time = dt.getUTCDate() + '-' + (dt.getUTCMonth() + 1).toString() + '-' + dt.getUTCFullYear() + '@' + dt.getUTCHours() + ':' + dt.getUTCMinutes() + ':' + dt.getSeconds()
-				$scope.rain.dataset[0].data.unshift({value: tempJS.rain});
-				$scope.rain.categories[0].category.unshift({label: date_time});
-				console.log(msg.data);
-				/*$scope.heat.data.unshift({value: tempJS.temperature, label: date_time});
-				$scope.pressure.data.unshift({value: tempJS.pressure, label: date_time});
-				$scope.light.data.unshift({value: tempJS.light, label: date_time});
-				$scope.humidity.data.unshift({value: tempJS.humidity, label: date_time});*/
+				$scope.rain.dataset[0].data.push({value: tempJS.rain});
+				$scope.rain.categories[0].category.push({label: date_time});
+				// console.log(msg.data);
+				$scope.heat.dataset[0].data.push({value: tempJS.temperature});
+				$scope.heat.categories[0].category.push({label: date_time});
+				$scope.pressure.dataset[0].data.push({value: tempJS.pressure});
+				$scope.pressure.categories[0].category.push({label: date_time});
+				$scope.light.dataset[0].data.push({value: tempJS.light});
+				$scope.light.categories[0].category.push({label: date_time});
+				$scope.humidity.dataset[0].data.push({value: tempJS.humidity});
+				$scope.humidity.categories[0].category.push({label: date_time});
+				$scope.longitude = tempJS.longitude;
+				$scope.latitude = tempJS.latitude;
+				$scope.altitude = tempJS.altitude;
+				$scope.wind_dir.dataset[0].data.push({value: tempJS.light});
+				$scope.wind_dir.categories[0].category.push({label: date_time});
+				$scope.wind_spd.dataset[0].data.push({value: tempJS.light});
+				$scope.wind_spd.categories[0].category.push({label: date_time});
+				$scope.battery = tempJS.battery;
 			});
 		};
+
 
 		var source = new EventSource('/stream');
 		source.addEventListener('message', handleCallback, false)
 	}]);
 
+	var rain = {
+		"chart": {
+			"caption": "Rainfall",
+			"subCaption": "Amount of Rainfall, measured in inches",
+			"xaxisname": "Date/Time",
+			"yaxisname": "Amount in inches",
+			"subcaptionFontBold": "0",
+			"numberSuffix":"in",
+			"theme": "ocean",
+			"labeldisplay": "rotate",
+			"divlinecolor": "#cccccc",
+			"linecolor": "#f94700"
+		},
+		"categories": [
+			{
+				"category": []
+			}
+		],
+		"dataset": [
+			{
+				"data":[]
+			}
+		]
+	};
 	var wind_dir = {
 		"chart": {
 			"caption": "Wind Direction",
@@ -63,8 +84,16 @@
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
 			"linecolor": "#7c0300"
-		},
-		"data": []
+		},"categories": [
+			{
+				"category": []
+			}
+		],
+		"dataset": [
+			{
+				"data":[]
+			}
+		]
 	};
 	var wind_spd = {
 		"chart": {
@@ -78,8 +107,16 @@
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
 			"linecolor": "#7c0300"
-		},
-		"data": []
+		},"categories": [
+			{
+				"category": []
+			}
+		],
+		"dataset": [
+			{
+				"data":[]
+			}
+		]
 	};
 	var temperature = {
 		"chart": {
@@ -93,8 +130,16 @@
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
 			"linecolor": "#7c0300"
-		},
-		"data": []
+		},"categories": [
+			{
+				"category": []
+			}
+		],
+		"dataset": [
+			{
+				"data":[]
+			}
+		]
 	};
 	var pressure = {
 		"chart": {
@@ -108,8 +153,16 @@
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
 			"linecolor": "#f0d70b"
-		},
-		"data": []
+		},"categories": [
+			{
+				"category": []
+			}
+		],
+		"dataset": [
+			{
+				"data":[]
+			}
+		]
 	};
 	var light = {
 		"chart": {
@@ -123,22 +176,38 @@
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
 			"linecolor": "#ffb011"
-		},
-		"data": []
+		},"categories": [
+			{
+				"category": []
+			}
+		],
+		"dataset": [
+			{
+				"data":[]
+			}
+		]
 	};
 	var humidity = {
 		"chart": {
 			"caption": "Humidity",
-			"subcaption": "Check Unit Of Measure and Update accordingly",
+			"subcaption": "Amount of moisture in the Atmosphere",
 			"xaxisname": "Date/Time",
-			"yaxisname": "Unit",
+			"yaxisname": "Moisture Percentage",
 			"subcaptionFontBold": "0",
-			"numberSuffix": "",
+			"numberSuffix": "%",
 			"theme": "ocean",
 			"labeldisplay": "rotate",
 			"divlinecolor": "#cccccc",
 			"linecolor": "#7fa2ff"
-		},
-		"data": []
+		},"categories": [
+			{
+				"category": []
+			}
+		],
+		"dataset": [
+			{
+				"data":[]
+			}
+		]
 	};
 })();

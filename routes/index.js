@@ -37,7 +37,7 @@ router.get('/', function (req, res, next) {
 router.post('/publish', function (req, res, next) {
 	var insertedData = req.body;
 
-	// redis_cli.setex(/*insertedData.date*/new Date().toISOString(), 3600 * 48, JSON.stringify(insertedData));
+	redis_cli.setex(/*insertedData.date*/new Date().toISOString(), 3600 * 48, JSON.stringify(insertedData));
 	var client = mqtt.connect(hosturl, options);
 	client.on('connect', function () {
 		client.publish(mychannel, JSON.stringify(insertedData), function () {

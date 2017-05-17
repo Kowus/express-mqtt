@@ -260,6 +260,7 @@ hr.small {
 
 
 .bg-primary{background-color:#7c0300}
+.btn-primary{background-color: #7c0300}
 .text-primary{color:#7c0300}
 a.text-primary:focus,a.text-primary:hover{color:rgba(201,4,0,0.95)}
 blockquote.the-zen{
@@ -301,6 +302,3 @@ footer {
     50% {box-shadow: 1px 1px 5px #f0d70b;}
 }
 
-.h93{
-    color: #7fa2ff;
-}
