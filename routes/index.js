@@ -44,7 +44,7 @@ router.post('/publish', function (req, res, next) {
 		client.publish(mychannel, JSON.stringify(insertedData), function () {
 			client.end();
 			res.writeHead(204, {'Connection': 'keep-alive'});
-			res.end();
+			res.send("OK!");
 		});
 	});
 });
